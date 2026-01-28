@@ -1,1 +1,34 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
+class Animal{
+    void walk(){
+        System.out.println("I am walking");
+    }
+}
+
+class Bird extends Animal{
+    void fly(){
+        System.out.println("I am flying");
+    }
+}
+class cuckoo extends Bird{
+    void sing(){
+        System.out.println("I am singing");
+    }
+}
+
+public class Main{
+
+   public static void main(String args[]){
+
+      cuckoo c = new cuckoo();
+      c.walk();
+      c.fly();
+      c.sing();
+    
+   }
+}
