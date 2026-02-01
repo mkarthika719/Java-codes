@@ -1,0 +1,71 @@
+public class VehicleInheritance {
+    public static class Vehicle {
+        String manufacturer;
+        String color;
+        public Vehicle(String manufacturer, String color) {
+            this.manufacturer = manufacturer;
+            this.color = color;
+        }
+        public void start() {
+            System.out.println(manufacturer + " vehicle started.");
+        }
+        public void stop() {
+            System.out.println(manufacturer + " vehicle stopped.");
+        }
+        public void accelerate() {
+            System.out.println(manufacturer + " vehicle accelerates.");
+        }
+        public void honk() {
+            System.out.println("Beep beep!");
+        }
+    }
+    public static class Sedan extends Vehicle {
+        int numberOfDoors;
+        public Sedan(String manufacturer, String color, int numberOfDoors) {
+            super(manufacturer, color);
+            this.numberOfDoors = numberOfDoors;
+        }
+        public void openTrunk() {
+            System.out.println(manufacturer + " " + color + " sedan's trunk opened.");
+        }
+        public void honk() {
+            System.out.println("Soft honk from the " + manufacturer + " sedan.");
+        }
+    }
+    public static class Truck extends Vehicle {
+        double cargoCapacityKg;
+        public Truck(String manufacturer, String color, double cargoCapacityKg) {
+            super(manufacturer, color);
+            this.cargoCapacityKg = cargoCapacityKg;
+        }
+        public void engageFourWheelDrive() {
+            System.out.println(manufacturer + " " + color + " truck engaging 4WD.");
+        }
+        public void honk() {
+            System.out.println("Loud horn from the " + manufacturer + " truck!");
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Demonstrating Inheritance");
+        Vehicle genericVehicle = new Vehicle("Universal Auto", "Gray");
+        genericVehicle.start();
+        genericVehicle.honk();
+        System.out.println();
+        Sedan mySedan = new Sedan("Toyota", "Blue", 4);
+        System.out.println("Sedan: " + mySedan.color + " " + mySedan.manufacturer +
+                           ", Doors: " + mySedan.numberOfDoors);
+        mySedan.start();
+        mySedan.accelerate();
+        mySedan.openTrunk();
+        mySedan.honk();
+        System.out.println();
+        Truck myTruck = new Truck("Ford", "Red", 1500.0);
+        System.out.println("Truck: " + myTruck.color + " " + myTruck.manufacturer +
+                           ", Capacity: " + myTruck.cargoCapacityKg + " kg");
+        myTruck.start();
+        myTruck.engageFourWheelDrive();
+        myTruck.stop();
+        myTruck.honk();
+    }
+}
+
