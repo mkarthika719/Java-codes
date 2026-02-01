@@ -1,0 +1,60 @@
+public class VehiclePolymorphism{
+    public static class Vehicle {
+        String type;
+        public Vehicle(String type) {
+            this.type = type;
+        }
+        public void startEngine() {
+            System.out.println(type + " engine starts.");
+        }
+        public void drive() {
+            System.out.println(type + " is driving.");
+        }
+        public void stopEngine() {
+            System.out.println(type + " engine stops.");
+        }
+    }
+    public static class SportsCar extends Vehicle {
+        public SportsCar() {
+            super("Sports Car");
+        }
+        public void startEngine() {
+            System.out.println("Sports Car engine roars to life!");
+        }
+        public void drive() {
+            System.out.println("Sports Car zips down the road.");
+        }
+    }
+    public static class PickupTruck extends Vehicle {
+        public PickupTruck() {
+            super("Pickup Truck");
+        }
+        public void startEngine() {
+            System.out.println("Pickup Truck diesel engine rumbles.");
+        }
+        public void drive() {
+            System.out.println("Pickup Truck cruises along, ready for work.");
+        }
+    }
+    public static class TestDriver {
+        public void performTestDrive(Vehicle vehicle) {
+            System.out.println();
+            System.out.println("Starting Test Drive for: " + vehicle.type);
+            vehicle.startEngine();
+            vehicle.drive();
+            System.out.println("Test driving completed.");
+            vehicle.stopEngine();
+            System.out.println("Test Drive ended for: " + vehicle.type);
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Demonstrating Polymorphism");
+        TestDriver driver = new TestDriver();
+        Vehicle basicVehicle = new Vehicle("Basic Vehicle");
+        Vehicle sportsCar = new SportsCar();
+        Vehicle pickupTruck = new PickupTruck();
+        driver.performTestDrive(basicVehicle);
+        driver.performTestDrive(sportsCar);
+        driver.performTestDrive(pickupTruck);
+    }
+}
