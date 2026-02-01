@@ -1,0 +1,99 @@
+public class  CarEncapsulation{
+    static class Car {
+        private String make;
+        private String model;
+        private int year;
+        private double fuelLevel;      
+        private boolean engineRunning; 
+        public Car(String make, String model, int year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+            this.fuelLevel = 50.0;      
+            this.engineRunning = false;
+        }
+        public String getMake() {
+            return make;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public int getYear() {
+            return year;
+        }
+
+        public double getFuelLevel() {
+            return fuelLevel;
+        }
+
+        public boolean isEngineRunning() {
+            return engineRunning;
+        }
+        public void startEngine() {
+            if (engineRunning) {
+                System.out.println("Engine is already running.");
+            } else if (fuelLevel <= 0) {
+                System.out.println("Cannot start engine: No fuel!");
+            } else {
+                engineRunning = true;
+                System.out.println("Engine started successfully.");
+            }
+        }
+        public void stopEngine() {
+            if (!engineRunning) {
+                System.out.println("Engine is already off.");
+            } else {
+                engineRunning = false;
+                System.out.println("Engine stopped.");
+            }
+        }
+        public void drive(double distanceKm) {
+            if (!engineRunning) {
+                System.out.println("Cannot drive: Engine is off.");
+                return;
+            }
+            double fuelNeeded = distanceKm * 0.1;
+            if (fuelLevel >= fuelNeeded) {
+                fuelLevel -= fuelNeeded;
+                System.out.println("Car drove " + distanceKm + " km.");
+                System.out.println("Fuel remaining: " + String.format("%.2f", fuelLevel) + " L");
+            } else {
+                double possibleDistance = fuelLevel / 0.1;
+                System.out.println("Car ran out of fuel after " 
+                        + String.format("%.2f", possibleDistance) + " km.");
+                fuelLevel = 0;
+                stopEngine();
+            }
+        }
+        public void refuel(double liters) {
+            if (liters <= 0) {
+                System.out.println("Refuel amount must be positive.");
+                return;
+            }
+
+            fuelLevel += liters;
+            System.out.println("Refueled " + liters + " L.");
+            System.out.println("Current fuel level: " 
+                    + String.format("%.2f", fuelLevel) + " L");
+        }
+    }    public static void main(String[] args) {
+
+        System.out.println("=== Car Encapsulation Example ===");
+        Car car = new Car("Honda", "Civic", 2023);
+        System.out.println("Car: " + car.getMake() + " " + car.getModel());
+        System.out.println("Year: " + car.getYear());
+        System.out.println("Fuel: " + car.getFuelLevel() + " L");
+        System.out.println("Engine running: " + car.isEngineRunning());
+        car.startEngine();
+        car.drive(100);
+        car.refuel(20);
+        car.drive(600);
+        car.drive(10);
+        car.startEngine();
+        System.out.println("\nFinal Fuel: " 
+                + String.format("%.2f", car.getFuelLevel()) + " L");
+        System.out.println("Engine running: " + car.isEngineRunning());
+    }
+}
