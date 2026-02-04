@@ -15,19 +15,15 @@ public class  CarEncapsulation{
         public String getMake() {
             return make;
         }
-
         public String getModel() {
             return model;
         }
-
         public int getYear() {
             return year;
         }
-
         public double getFuelLevel() {
             return fuelLevel;
         }
-
         public boolean isEngineRunning() {
             return engineRunning;
         }
