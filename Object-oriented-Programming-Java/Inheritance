@@ -52,8 +52,7 @@ public class VehicleInheritance {
         genericVehicle.honk();
         System.out.println();
         Sedan mySedan = new Sedan("Toyota", "Blue", 4);
-        System.out.println("Sedan: " + mySedan.color + " " + mySedan.manufacturer +
-                           ", Doors: " + mySedan.numberOfDoors);
+        System.out.println("Sedan: " + mySedan.color + " " + mySedan.manufacturer + ", Doors: " + mySedan.numberOfDoors);
         mySedan.start();
         mySedan.accelerate();
         mySedan.openTrunk();
