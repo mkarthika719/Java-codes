@@ -1,0 +1,82 @@
+public VehicleInheritance{
+    public interface Drivable {
+        void start();
+        void steer();
+        void accelerate();
+        void brake();
+        void turnOff();
+    }
+    public static abstract class ManualCar implements Drivable {
+        String make;
+        String model;
+        public ManualCar(String make, String model) {
+            this.make = make;
+            this.model = model;
+        }
+        public void start() {
+            System.out.println(make + " " + model +
+                    ": Insert key, turn ignition, press clutch, shift to first gear.");
+        }
+        public void steer() {
+            System.out.println(make + " " + model +
+                    ": Driver manually controls the steering.");
+        }
+        public void accelerate() {
+            System.out.println(make + " " + model +
+                    ": Press accelerator and change gears manually.");
+        }
+        public void brake() {
+            System.out.println(make + " " + model +
+                    ": Press brake pedal to slow down.");
+        }
+        public void turnOff() {
+            System.out.println(make + " " + model +
+                    ": Shift to neutral and turn off the engine.");
+        }
+    }
+    public static class AutonomousCar implements Drivable {
+        String brand;
+        public AutonomousCar(String brand) {
+            this.brand = brand;
+        }
+        public void start() {
+            System.out.println(brand +
+                    " Autonomous Car: System initialized and ready.");
+        }
+        public void steer() {
+            System.out.println(brand +
+                    " Autonomous Car: AI-controlled steering in action.");
+        }
+        public void accelerate() {
+            System.out.println(brand +
+                    " Autonomous Car: Smooth AI-managed acceleration.");
+        }
+        public void brake() {
+            System.out.println(brand +
+                    " Autonomous Car: Automatic braking applied.");
+        }
+        public void turnOff() {
+            System.out.println(brand +
+                    " Autonomous Car: Vehicle safely parked and powered down.");
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Demonstrating Abstraction");
+        Drivable manualCar = new ManualCar("Ford", "Focus");
+        Drivable autonomousCar = new AutonomousCar("Tesla");
+        System.out.println();
+        System.out.println("Driving Manual Car");
+        manualCar.start();
+        manualCar.accelerate();
+        manualCar.steer();
+        manualCar.brake();
+        manualCar.turnOff();
+        System.out.println();
+        System.out.println("Driving Autonomous Car");
+        autonomousCar.start();
+        autonomousCar.accelerate();
+        autonomousCar.steer();
+        autonomousCar.brake();
+        autonomousCar.turnOff();
+    }
+}
