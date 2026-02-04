@@ -6,7 +6,7 @@ public VehicleInheritance{
         void brake();
         void turnOff();
     }
-    public static class ManualCar implements Drivable {
+    public static abstract class ManualCar implements Drivable {
         String make;
         String model;
         public ManualCar(String make, String model) {
@@ -61,9 +61,7 @@ public VehicleInheritance{
         }
     }
     public static void main(String[] args) {
-
         System.out.println("Demonstrating Abstraction");
-
         Drivable manualCar = new ManualCar("Ford", "Focus");
         Drivable autonomousCar = new AutonomousCar("Tesla");
         System.out.println();
