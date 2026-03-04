@@ -1,0 +1,29 @@
+class Solution {
+    public long countPairs(int[] nums, int k) {
+    Map<Integer,Long> f= new HashMap<>();
+    long c=0;
+    for(int n:nums){
+        int g=gcd(n,k);
+        for(int p:f.keySet()){
+             if((long)g*p%k==0){
+                c+=f.get(p);
+             }
+        }
+        if(f.containsKey(g)){
+                f.put(g,f.get(g)+1);
+        }
+        else{
+            f.put(g,1L);
+        }
+    }
+    return c;
+    }
+    public static int gcd(int a,int b){
+             while(b!=0){
+                int t=b;
+                b=a%b;
+                a=t;
+             }
+             return a;
+    }
+}
