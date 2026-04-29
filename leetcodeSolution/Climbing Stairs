@@ -1,0 +1,14 @@
+class Solution {
+    public int climbStairs(int n) {
+        int c=2;
+        if(n<=2) return n;
+        int p=2;
+        int p1=1;
+         for(int i=3;i<=n;i++){
+            c=p+p1;
+            p1=p;
+            p=c;
+         }
+         return c;
+    }
+}
