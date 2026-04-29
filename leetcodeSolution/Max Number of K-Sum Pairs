@@ -1,0 +1,17 @@
+class Solution {
+    public int maxOperations(int[] nums, int k) {
+        int c=0;
+        HashMap<Integer,Integer> m = new HashMap<>();
+       for(int n:nums){
+        int s=k-n;
+        if(m.getOrDefault(s,0)>0){
+            c++;
+            m.put(s,m.get(s)-1);
+        }
+        else{
+          m.put(n,m.getOrDefault(n,0)+1);
+        }
+       }
+        return c;
+    }
+}
