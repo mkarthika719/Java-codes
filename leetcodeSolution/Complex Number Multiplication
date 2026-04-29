@@ -1,0 +1,11 @@
+class Solution {
+    public String complexNumberMultiply(String num1, String num2) {
+        String[] a=num1.split("\\+|i");
+        String[] b=num2.split("\\+|i");
+        int n1 =Integer.parseInt(a[0]);
+        int n2=Integer.parseInt(a[1]);
+        int m1=Integer.parseInt(b[0]);
+        int m2=Integer.parseInt(b[1]);
+        return (((n1*m1)-(n2*m2))+"+"+((n1*m2)+(n2*m1))+"i");
+    }
+}
