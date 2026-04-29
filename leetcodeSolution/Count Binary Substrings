@@ -1,0 +1,30 @@
+int countBinarySubstrings(char* s) {
+    int n = strlen(s);
+    if (n == 0) {
+        return 0;
+    }
+    int* groups = (int*)malloc(n * sizeof(int));
+    if (groups == NULL) {
+        return -1;
+    }
+
+    int gidx = 0;
+    int clen = 1;
+
+    for (int i = 1; i < n; i++) {
+        if (s[i] == s[i-1]) {
+            clen++;
+        } else {
+            groups[gidx++] = clen;
+            clen = 1;
+        }
+    }
+    groups[gidx++] = clen; 
+    int count = 0;
+    for (int i = 0; i < gidx - 1; i++) {
+        count += (groups[i] < groups[i+1] ? groups[i] : groups[i+1]);
+      
+    }
+    free(groups); 
+    return count;
+}
